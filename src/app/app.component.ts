@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { RollService } from "./roll.service";
-import { RollItem } from "./roll-item";
+import { RollService } from "./dynamic-components/roll.service";
+import { RollItem } from "./dynamic-components/roll-item";
 
 @Component({
   selector: "zl-root",
