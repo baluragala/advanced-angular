@@ -12,7 +12,7 @@ import { RollDirective } from "./roll.directive";
 @Component({
   selector: "zl-roll",
   template: `
-    <div class="ad-banner-example">
+    <div>
       <h3>Rollers</h3>
       <ng-template zlRollHost></ng-template>
     </div>
@@ -20,8 +20,8 @@ import { RollDirective } from "./roll.directive";
 })
 export class RollComponent implements OnInit, OnDestroy {
   @Input() items: RollItem[];
-  currentAdIndex = -1;
-  @ViewChild(RollDirective) adHost: RollDirective;
+  currentRollIndex = -1;
+  @ViewChild(RollDirective) rollHost: RollDirective;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -36,14 +36,14 @@ export class RollComponent implements OnInit, OnDestroy {
   }
 
   loadComponent() {
-    this.currentAdIndex = (this.currentAdIndex + 1) % this.items.length;
-    const rollItem = this.items[this.currentAdIndex];
+    this.currentRollIndex = (this.currentRollIndex + 1) % this.items.length;
+    const rollItem = this.items[this.currentRollIndex];
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       rollItem.component
     );
 
-    const viewContainerRef = this.adHost.viewContainerRef;
+    const viewContainerRef = this.rollHost.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
