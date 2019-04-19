@@ -1,4 +1,4 @@
-import { DynamicComponentsModule } from "./dynamic-components/dynamic-components.module";
+import { ComponentsModule } from "./components/components.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, DynamicComponentsModule],
+  imports: [BrowserModule, AppRoutingModule, ComponentsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
