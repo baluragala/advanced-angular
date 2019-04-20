@@ -39,6 +39,7 @@ export class ListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    setInterval(() => console.log(new Date().toTimeString()), 1000);
     this.products = [
       {
         id: 1,
