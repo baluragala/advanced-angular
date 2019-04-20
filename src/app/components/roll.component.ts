@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { RollItem } from "./roll-item";
 import { RollDirective } from "./roll.directive";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "zl-roll",
@@ -19,14 +20,19 @@ import { RollDirective } from "./roll.directive";
   `
 })
 export class RollComponent implements OnInit, OnDestroy {
-  @Input() items: RollItem[];
+  items: RollItem[];
   currentRollIndex = -1;
   @ViewChild(RollDirective) rollHost: RollDirective;
   interval: any;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    // tslint:disable-next-line:no-string-literal
+    this.items = this.route.snapshot.data["items"] as RollItem[];
     this.loadComponent();
     this.getItems();
   }
